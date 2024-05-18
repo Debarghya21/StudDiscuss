@@ -13,7 +13,7 @@
     </title>
   </head>
   <body>
-  <?php include 'partials/_dbconnect.php';?>
+  <?php include 'partials/_dbconnect.php';?> // Connecting to the database.
     <?php include 'partials/_header.php';?>
     
     <?php
@@ -33,7 +33,7 @@
      <?php
     $showAlert=false;
     $method=$_SERVER['REQUEST_METHOD'];
-    if($method=="POST"){
+    if($method=="POST"){ // When the form is posted.
       $comment=$_POST['comment'];
       $sno=$_POST['sno'];
       $sql="INSERT INTO `comments` ( `comment_content`, `thread_id`, `comment_by`, `comment_time`) VALUES ( '$comment', '$id', '$sno', current_timestamp());";
