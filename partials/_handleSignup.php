@@ -1,6 +1,6 @@
 <?php
 $showError="false";
-if($_SERVER["REQUEST_METHOD"]=="POST"){
+if($_SERVER["REQUEST_METHOD"]=="POST"){ // When the Sign up modal is posted.
     include '_dbconnect.php';
     $user_email=$_POST['signupEmail'];
     $pass=$_POST['signupPassword'];
@@ -13,10 +13,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     } else {
         if($pass == $cpass){
-            $hash = password_hash($pass,PASSWORD_DEFAULT);
+            $hash = password_hash($pass,PASSWORD_DEFAULT); // For password hashing.
             $sql="INSERT INTO `users` ( `user_email`, `user_pass`, `timestamp`) VALUES ( '$user_email', '$hash', current_timestamp());";
             $result=mysqli_query($conn,$sql);
-            if($result){
+            if($result){ // Alert for success.
                 $showAlert=true;
                 header("Location: /STUDDISCUSS/index.php?signupsuccess=true");
                 exit();
