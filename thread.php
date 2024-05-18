@@ -20,7 +20,7 @@
     $id=$_GET['threadid'];
     $sql="SELECT * FROM `threads` WHERE thread_id=$id";
     $result=mysqli_query($conn,$sql);
-    while($row=mysqli_fetch_assoc($result)){
+    while($row=mysqli_fetch_assoc($result)){ // Fetching  the thread .
       $title=$row['thread_title'];
       $desc=$row['thread_desc'];
       $thread_user_id=$row['thread_user_id'];
@@ -39,7 +39,7 @@
       $sql="INSERT INTO `comments` ( `comment_content`, `thread_id`, `comment_by`, `comment_time`) VALUES ( '$comment', '$id', '$sno', current_timestamp());";
       $result=mysqli_query($conn,$sql);
       $showAlert=true;
-      if($showAlert){
+      if($showAlert){ // Success Alert comment is added.
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Success!</strong> Your comment is added.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -94,9 +94,9 @@ Edit and delete posts as necessary using the tools provided by the forum.</p>
     <?php
     $id=$_GET['threadid'];
     $sql="SELECT * FROM `comments` WHERE thread_id=$id";
-    $result=mysqli_query($conn,$sql);
+    $result=mysqli_query($conn,$sql); 
     $noResult=true;
-    while($row=mysqli_fetch_assoc($result)){
+    while($row=mysqli_fetch_assoc($result)){ // Fetching the comments.
       $noResult=false;
       $id=$row['thread_id'];
       $content=$row['comment_content'];
@@ -115,7 +115,7 @@ Edit and delete posts as necessary using the tools provided by the forum.</p>
       </div>
     </div>';
     }
-    if($noResult){
+    if($noResult){ // If no comments are found.
       echo '<div class="jumbotron jumbotron-fluid">
       <div class="container">
         <p class="display-6">No Comments Found</p>
