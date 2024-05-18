@@ -19,11 +19,11 @@
   </head>
   <body>
   <?php include 'partials/_dbconnect.php';?>
-    <?php include 'partials/_header.php'?>
+    <?php include 'partials/_header.php'?> 
     <div class="container">
-        <h2>Debarghya Chakraborty-8910686420</h2>
-        <h2>Ranjan Chakraborty-9836030077</h2>
-        <h2>Tumpa Chakraborty-9874672143</h2>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
     </div>
     <?php include 'partials/_footer.php'?>
 
