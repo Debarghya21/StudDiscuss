@@ -46,11 +46,11 @@
         <h2 class='text-center'>StudDiscuss-Choose Categories</h2>
 
     </div>
-    <div class='container'>
+    <div class='container'> <!-- It contains all the categories -->
         <div class="row">
     <?php $sql="SELECT * FROM `categories`";
         $result=mysqli_query($conn,$sql);
-        while($row=mysqli_fetch_assoc($result)){
+        while($row=mysqli_fetch_assoc($result)){ // It is fetching all the catagories from the database.
             $id=$row['category_id'];
             $cat=$row['category_name'];
             $desc=$row['category_description'];
@@ -59,7 +59,7 @@
             <div class="card" style="width: 18rem;">
       <img src="https://source.unsplash.com/500x400/?coding,'.$cat.'" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title"><a href="threadlist.php?catid='.$id.'">'.$cat.'</a></h5>
+        <h5 class="card-title"><a href="threadlist.php?catid='.$id.'">'.$cat.'</a></h5> 
         <p class="card-text">'.substr($desc,0,90).'...</p>
         <a href="threadlist.php?catid='.$id.'" class="btn btn-primary">View Threads</a>
       </div>
