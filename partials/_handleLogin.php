@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){ // When the login page is posted.
     $numRows = mysqli_num_rows($result);
     if($numRows == 1){
         $row = mysqli_fetch_assoc($result);
-            if(password_verify($pass,$row['user_pass'])) // For password hashing.
+            if(password_verify($pass,$row['user_pass'])) // For password verification.
             {
                 session_start();
                 $_SESSION['loggedin']=true;
