@@ -28,7 +28,7 @@
       $noResults=true;
     $sql="select * from threads where match(thread_title,thread_desc) against('$query');";
     $result=mysqli_query($conn,$sql);
-    while($row=mysqli_fetch_assoc($result)){
+    while($row=mysqli_fetch_assoc($result)){ // Fetching the search result.
         
       $title=$row['thread_title'];
       $desc=$row['thread_desc'];
@@ -38,11 +38,11 @@
       echo ' <div class="result">
       <h3><a href="'.$url.'" class="text-dark"> '.$title.' </a></h3>
       <p>'.$desc.'</p>
-    </div>';
+    </div>'; // Printing the search results.
  
     
     }
-    if($noResults){
+    if($noResults){ // If no search results are found.
         echo '<div class="jumbotron jumbotron-fluid">
         <div class="container">
           <h1 class="display-4">No Results Found</h1>
