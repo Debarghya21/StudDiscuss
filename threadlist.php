@@ -13,14 +13,14 @@
     </title>
   </head>
   <body>
-  <?php include 'partials/_dbconnect.php';?>
+  <?php include 'partials/_dbconnect.php';?> // Connecting to the database.
     <?php include 'partials/_header.php';?>
     
     <?php
     $id=$_GET['catid'];
     $sql="SELECT * FROM `categories` WHERE category_id=$id";
     $result=mysqli_query($conn,$sql);
-    while($row=mysqli_fetch_assoc($result)){
+    while($row=mysqli_fetch_assoc($result)){ // Fetch the categories.
       $catname=$row['category_name'];
       $catdesc=$row['category_description'];
     }
@@ -28,14 +28,14 @@
     <?php
     $showAlert=false;
     $method=$_SERVER['REQUEST_METHOD'];
-    if($method=='POST'){
+    if($method=='POST'){ // When the form is submitted.
       $th_title=$_POST['title'];
       $th_desc=$_POST['desc'];
       $sno=$_POST['sno'];
       $sql="INSERT INTO `threads` ( `thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES ( '$th_title', '$th_desc', '$id', '$sno', current_timestamp());";
       $result=mysqli_query($conn,$sql);
       $showAlert=true;
-      if($showAlert){
+      if($showAlert){ // Success Alert when the thread is added.
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Success!</strong> Your thread is added. Please wait for other student to reply.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -91,7 +91,7 @@ Edit and delete posts as necessary using the tools provided by the forum.</p>
     $sql="SELECT * FROM `threads` WHERE thread_cat_id=$id";
     $result=mysqli_query($conn,$sql);
     $noResult=true;
-    while($row=mysqli_fetch_assoc($result)){
+    while($row=mysqli_fetch_assoc($result)){ // Fetching the thread results.
       $noResult=false;
       $id=$row['thread_id'];
       $title=$row['thread_title'];
@@ -110,7 +110,7 @@ Edit and delete posts as necessary using the tools provided by the forum.</p>
       </div>
     </div>';
     }
-    if($noResult){
+    if($noResult){ // When no threads are found.
       echo '<div class="jumbotron jumbotron-fluid">
       <div class="container">
         <p class="display-6">No Threads Found</p>
